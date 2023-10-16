@@ -24,7 +24,7 @@ class RandomCheck {
             if (randomNum == num) {
                 System.out.println("Correct guess!!");
                 System.out.println("Number of attempts taken : " + attempts);
-                System.out.println("Score : " + (attempts * 100) / 10);
+                System.out.println("Score : " + ((10 - attempts) * 100) / 10);
                 flag = true;
             } else if (randomNum < num) {
                 System.out.println("Too high");
@@ -53,7 +53,7 @@ public class RandomNumber {
         while (choice == 1) {
             rc.check(s);
 
-            System.out.println("Do you want to play again?(Select 1 if yes, 0 if no)");
+            System.out.println("Do you want to play again?(Select 1 if yes)");
             choice = s.nextInt();
         }
         s.close();
