@@ -3,15 +3,16 @@
 import java.util.*;
 
 class RandomCheck {
-    void check(Scanner s) {
-
-        // Generating a random number
-        Random r = new Random();
-        int randomNum = r.nextInt(100) + 1;
+    void check() {
+        Scanner s = new Scanner(System.in);
 
         // To keep track of number of attempts
         int attempts = 0;
         boolean flag = false;
+
+        // Generating a random number
+        Random r = new Random();
+        int randomNum = r.nextInt(100) + 1;
 
         System.out.println("A random number has been generated between 1 to 100");
 
@@ -24,7 +25,7 @@ class RandomCheck {
             if (randomNum == num) {
                 System.out.println("Correct guess!!");
                 System.out.println("Number of attempts taken : " + attempts);
-                System.out.println("Score : " + (attempts * 100) / 10);
+                System.out.println("Score : " + ((10 - attempts) * 100) / 10);
                 flag = true;
             } else if (randomNum < num) {
                 System.out.println("Too high");
@@ -39,23 +40,26 @@ class RandomCheck {
             System.out.println("Maximum chances reached");
             System.out.println("The number is " + randomNum);
         }
-
     }
 }
 
-public class RandomNumber {
+public class R {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
 
         RandomCheck rc = new RandomCheck();
-        int choice = 1;
+        rc.check();
 
-        while (choice == 1) {
-            rc.check(s);
+        System.out.print("Do you want to play again?(Select 1 if yes, 0 if no)");
+        int choice = s.nextInt();
 
-            System.out.println("Do you want to play again?(Select 1 if yes, 0 if no)");
-            choice = s.nextInt();
+        if (choice == 1) {
+            System.out.println("Play again!!");
+            rc.check();
+        } else {
+            System.exit(0);
+            s.close();
         }
-        s.close();
+
     }
 }
