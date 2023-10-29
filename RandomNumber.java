@@ -57,5 +57,6 @@ public class RandomNumber {
             choice = s.nextInt();
         }
         s.close();
+        System.out.println("Have a Nice Day!!");
     }
 }
