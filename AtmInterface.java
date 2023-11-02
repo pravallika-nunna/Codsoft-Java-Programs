@@ -2,10 +2,8 @@ import java.util.*;
 
 class Transaction {
     private int balance;
-    private int pin;
 
-    Transaction(int pin) {
-        this.pin = pin;
+    Transaction() {
         this.balance = 100000;
     }
 
@@ -39,14 +37,18 @@ class AtmInterface {
         System.out.println("Insert Your Card");
 
         System.out.print("Enter your pin : ");
-        int pinNumber = scanner.nextInt();
+        String pinNumber = scanner.nextLine();
 
-        if (pinNumber < 1000 || pinNumber > 9999) {
+        while (pinNumber.length() != 4) {
             System.out.print("Enter valid Four digit pin.");
             System.exit(0);
+
+            if (pinNumber.length() != 4) {
+                System.out.println("Enter a valid four-digit number");
+            }
         }
 
-        Transaction t = new Transaction(pinNumber);
+        Transaction t = new Transaction();
 
         while (true) {
             System.out.println("Select your option : ");
@@ -74,6 +76,7 @@ class AtmInterface {
                     t.CheckBalance();
                     break;
                 case 4:
+                    scanner.close();
                     System.exit(0);
                     break;
                 default:
